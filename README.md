@@ -212,5 +212,6 @@ window:SetTheme(mainColor, secondColor)
 This UI library made by **.chillz.** (Discord)
 
 [MIT License](./LICENSE)
+
 Enjoy using the DrRay UI Library! 
 Have fun.
