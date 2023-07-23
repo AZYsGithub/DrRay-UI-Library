@@ -2,13 +2,16 @@
 This is a Roblox Exploit UI Library, simply i made this for fun, well. Feel free to modify those, using our library already helped us! example code can be viewed [here](link)
 ## Starting
 To start we need to declare a variable to get the library.
-`local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/Chillz-s-scripts/main/DrRay.lua"))()`
+```lua
+local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/Chillz-s-scripts/main/DrRay.lua"))()
+```
 
 To load the UI, we need to call the function to load it
 ```lua
 local window = DrRayLibrary:Load("DrRay", "Default")
 ```
 **Argument 1: Name of your UI (type: `string`)**
+
 **Argument 2: The Image ID, Setting to Default will set the default UI Logo (type: `string`)**
 
 ## Implemeting features
@@ -21,6 +24,7 @@ local tab = window.newTab("My Tab", "ImageIdHere")
 ```
 
 **Argument 1: Name of your tab (type: `string`)**
+
 **Argument 2: The Image ID (type: `string`)**
 
 ### Button
@@ -32,7 +36,9 @@ end)
 ```
 
 **Argument 1: Name Of the Button (type: `string`)**
+
 **Argument 2: Description of the button (type: `string`)**
+
 **Argument 3: Function to execute when the button clicked (type: `function`)
 
 ### Toggle
@@ -48,8 +54,11 @@ end)
 ```
 
 Argument 1: Name (type: `string`)**
+
 **Argument 2: Description (type: `string`)**
+
 **Argument 3: Default toggle (type: `boolean`)**
+
 **Argument 4: Function to execute (return: `bool`) (type: `function`)**
 
 ### Input Text
@@ -62,7 +71,9 @@ end)
 ```
 
 **Argument 1: Name/Title (type: `string`)**
+
 **Argument 2: Description  (type: `string`)**
+
 **Argument 3: function to execute (type: `function`)**
 
 ## Dropdown
@@ -75,8 +86,11 @@ end)
 ```
 
 **Argument 1: Name/Title (type: `string`)**
+
 **Argument 2: Description  (type: `string`)**
+
 **Argument 3: Table to listed on dropdown. (type: `table`)**
+
 **Argument 4: Function to execute, does return the selected  option inside the table. (return: string) (type: `function`)**
 
 ### Keybind
@@ -89,7 +103,9 @@ end)
 ```
 
 **Argument 1: Name/Title (type: `string`)**
+
 **Argument 2: Description  (type: `string`)**
+
 **Argument 3: Function to execute. (return: input) (type: `function`)**
 
 ### Slider
@@ -102,9 +118,13 @@ end)
 ```
 
 **Argument 1: Name/Title (type: `string`)**
+
 **Argument 2: Description  (type: `string`)**
+
 **Argument 3: How much does the max will in the slider. (type: `int`)**
+
 **Argument 4: For now, please keep it `false`. (type: `boolean`)**
+
 **Argument 5: Function to execute. (return: int) (type: `function`)**
 
 ## Built-in UI features
@@ -132,11 +152,13 @@ window:Close()
 To actually hide the ui you can use
 ```lua
 window:Hide()
+```
 
 ### Unhide/Show UI
 To show the ui you can use
 ```lua
 window:Show()
+```
 
 ### Customize Theme
 We also provides custom theme coloring by **2** accent colors.
@@ -150,4 +172,5 @@ window:SetTheme(mainColor, secondColor)
 ```
 
 **Argument 1: Main Color, background, button color, etc (type: `Color3`)**
+
 **Argument 2: Secondary Color, toggle turned on, slider color background  (type: `Color3`)**
