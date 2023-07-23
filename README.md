@@ -33,7 +33,7 @@ We provide pre-made features for your convenience.
 You can create multiple tabs to organize your features.
 
 ```lua
-local tab = window.newTab("My Tab", "ImageIdHere")
+local tab = DrRayLibrary.newTab("My Tab", "ImageIdHere")
 ```
 
 **Argument 1: Name of your tab (type: `string`)**
