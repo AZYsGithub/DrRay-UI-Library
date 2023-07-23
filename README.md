@@ -1,6 +1,10 @@
 # DrRay UI Library
 
-Introducing the DrRay UI Library, a Roblox Exploit UI Library created just for fun! Feel free to modify it as you wish, and using our library has already helped us a lot! You can check out an example code [here](link).
+Introducing the DrRay UI Library, a Roblox Exploit UI Library created just for fun! Feel free to modify it as you wish, and using our library has already helped us a lot! You can check out an example code [here](./Example.lua).
+
+[Source Code](./DrRay.lua)
+
+[Actual Source (Rbxm)](./ActualSource)
 
 ## Getting Started
 
