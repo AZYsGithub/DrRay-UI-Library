@@ -11,7 +11,7 @@ Introducing the DrRay UI Library, a Roblox Exploit UI Library created just for f
 To begin, you need to declare a variable to access the library.
 
 ```lua
-local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/Chillz-s-scripts/main/DrRay.lua"))()
+local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))()
 ```
 
 To load the UI, simply call the function:
