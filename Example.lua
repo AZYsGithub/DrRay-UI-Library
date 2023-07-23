@@ -5,7 +5,7 @@ local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/
 local window = DrRayLibrary:Load("DrRay!", "Default")
 
 -- Create the first tab with an image ID
-local tab1 = window.newTab("Tab 1", "ImageIdHere")
+local tab1 = DrRayLibrary.newTab("Tab 1", "ImageIdHere")
 
 -- Add elements to the first tab
 tab1.newLabel("Hello, this is Tab 1.")
