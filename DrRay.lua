@@ -1513,6 +1513,14 @@ function UILIB.newTab(name, img)
 		return newLabel.Title
 	end
 
+        function self.editLabel(newLabel, text)
+		newLabel.Parent = newTab
+		newLabel.Visible = true
+		newLabel.Title.Text = text
+
+		return newLabel.Title
+        end
+
 	function self.newInput(name, desc, func)
 		local newInput = reserved.Textbox:Clone()
 		local textbox = newInput.TextboxBar.ActualTextbox
