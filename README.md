@@ -209,7 +209,7 @@ window:SetTheme(mainColor, secondColor)
 **Argument 2: Secondary Color, toggle when activated, slider color background. (type: `Color3`)**
 
 # Credit
-This UI library made by **.chillz.** (Discord)
+This UI library made by **.chill.z.** (Discord)
 
 [MIT License](./LICENSE)
 
