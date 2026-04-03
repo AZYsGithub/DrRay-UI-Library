@@ -361,6 +361,118 @@ DRR["2f"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.f
 
 -- DrRay.Folder
 DRR["30"] = Instance.new("Folder", DRR["1"]);
+DRR["cp1"] = Instance.new("Frame", DRR["30"])
+DRR["cp1"]["BorderSizePixel"] = 0
+DRR["cp1"]["BackgroundColor3"] = Color3.fromRGB(40, 45, 62)
+DRR["cp1"]["BackgroundTransparency"] = 0.4
+DRR["cp1"]["Size"] = UDim2.new(0.9614325165748596, 0, 0.28, 0)
+DRR["cp1"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
+DRR["cp1"]["Position"] = UDim2.new(0.019, 0, 0.12, 0)
+DRR["cp1"]["AutomaticSize"] = Enum.AutomaticSize.Y
+DRR["cp1"]["Visible"] = false
+DRR["cp1"]["Name"] = "ColorPicker"
+
+Instance.new("UICorner", DRR["cp1"]).CornerRadius = UDim.new(0.04, 0)
+
+local cp1Gradient = Instance.new("UIGradient", DRR["cp1"])
+cp1Gradient.Rotation = 90
+cp1Gradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0.000, Color3.fromRGB(89, 89, 89)),
+    ColorSequenceKeypoint.new(1.000, Color3.fromRGB(139, 139, 139))
+}
+
+-- Title
+local cpTitle = Instance.new("TextLabel", DRR["cp1"])
+cpTitle.Name = "Title"
+cpTitle.BorderSizePixel = 0
+cpTitle.BackgroundTransparency = 1
+cpTitle.TextXAlignment = Enum.TextXAlignment.Left
+cpTitle.TextScaled = true
+cpTitle.TextWrapped = true
+cpTitle.FontFace = Font.new([[rbxassetid://11702779517]], Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+cpTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+cpTitle.TextSize = 14
+cpTitle.Size = UDim2.new(0.96, 0, 0.18, 0)
+cpTitle.Position = UDim2.new(0.017, 0, 0.04, 0)
+cpTitle.Text = "ColorPicker"
+
+-- Description
+local cpDesc = Instance.new("TextLabel", DRR["cp1"])
+cpDesc.Name = "Description"
+cpDesc.BorderSizePixel = 0
+cpDesc.BackgroundTransparency = 1
+cpDesc.TextXAlignment = Enum.TextXAlignment.Left
+cpDesc.TextScaled = true
+cpDesc.TextWrapped = true
+cpDesc.FontFace = Font.new([[rbxassetid://11702779517]], Enum.FontWeight.Regular, Enum.FontStyle.Italic)
+cpDesc.TextColor3 = Color3.fromRGB(255, 255, 255)
+cpDesc.TextSize = 14
+cpDesc.Size = UDim2.new(0.96, 0, 0.13, 0)
+cpDesc.Position = UDim2.new(0.011, 0, 0.76, 0)
+cpDesc.Text = "Pick a color."
+
+-- Color preview swatch
+local cpPreview = Instance.new("Frame", DRR["cp1"])
+cpPreview.Name = "Preview"
+cpPreview.BorderSizePixel = 0
+cpPreview.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+cpPreview.Size = UDim2.new(0.12, 0, 0.38, 0)
+cpPreview.Position = UDim2.new(0.017, 0, 0.23, 0)
+Instance.new("UICorner", cpPreview).CornerRadius = UDim.new(0.2, 0)
+
+-- R label + slider bar
+local function makeCPSlider(parent, name, yPos, color)
+    local label = Instance.new("TextLabel", parent)
+    label.Name = name.."Label"
+    label.BorderSizePixel = 0
+    label.BackgroundTransparency = 1
+    label.TextScaled = true
+    label.TextXAlignment = Enum.TextXAlignment.Left
+    label.FontFace = Font.new([[rbxassetid://11702779517]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    label.TextColor3 = Color3.fromRGB(255, 255, 255)
+    label.Size = UDim2.new(0.06, 0, 0.13, 0)
+    label.Position = UDim2.new(0.017, 0, yPos, 0)
+    label.Text = name
+
+    local bar = Instance.new("Frame", parent)
+    bar.Name = name.."Bar"
+    bar.BorderSizePixel = 0
+    bar.BackgroundColor3 = Color3.fromRGB(30, 30, 42)
+    bar.Size = UDim2.new(0.72, 0, 0.1, 0)
+    bar.Position = UDim2.new(0.08, 0, yPos + 0.015, 0)
+    Instance.new("UICorner", bar).CornerRadius = UDim.new(0.5, 0)
+
+    local fill = Instance.new("Frame", bar)
+    fill.Name = "Fill"
+    fill.BorderSizePixel = 0
+    fill.BackgroundColor3 = color
+    fill.Size = UDim2.new(1, 0, 1, 0)
+    Instance.new("UICorner", fill).CornerRadius = UDim.new(0.5, 0)
+
+    local trigger = Instance.new("TextButton", bar)
+    trigger.Name = "Trigger"
+    trigger.Size = UDim2.new(1, 0, 1, 0)
+    trigger.BackgroundTransparency = 1
+    trigger.Text = ""
+    trigger.BorderSizePixel = 0
+
+    local valLabel = Instance.new("TextLabel", parent)
+    valLabel.Name = name.."Value"
+    valLabel.BorderSizePixel = 0
+    valLabel.BackgroundTransparency = 1
+    valLabel.TextScaled = true
+    valLabel.FontFace = Font.new([[rbxassetid://11702779517]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal)
+    valLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    valLabel.Size = UDim2.new(0.1, 0, 0.13, 0)
+    valLabel.Position = UDim2.new(0.82, 0, yPos, 0)
+    valLabel.Text = "255"
+
+    return fill, trigger, valLabel
+end
+
+makeCPSlider(DRR["cp1"], "R", 0.23, Color3.fromRGB(255, 80, 80))
+makeCPSlider(DRR["cp1"], "G", 0.40, Color3.fromRGB(80, 255, 80))
+makeCPSlider(DRR["cp1"], "B", 0.57, Color3.fromRGB(80, 80, 255))
 
 
 -- DrRay.Folder.TabReserved
@@ -1279,6 +1391,7 @@ local UILIB = {}
 local parent  = script.Parent
 local reserved = parent.Folder
 UILIB.__index = UILIB
+reserved.ColorPicker = reserved:FindFirstChild("ColorPicker")
 
 local listening = false
 local twServ = game:GetService("TweenService")
@@ -1617,67 +1730,61 @@ function UILIB.newTab(name, img)
 			end)
 		end)
 	end
+function self.newSlider(name, desc, default, min, max, func)
+    local newSlider = reserved.Slider:Clone()
 
+    newSlider.MouseEnter:Connect(function()
+        local twBtn = twServ:Create(newSlider, TweenInfo.new(0.2), { Transparency = 0 })
+        twBtn:Play()
+    end)
+    newSlider.MouseLeave:Connect(function()
+        local twBtn = twServ:Create(newSlider, TweenInfo.new(0.2), { Transparency = 0.4 })
+        twBtn:Play()
+    end)
+    newSlider.Visible = true
+    newSlider.Name = name
+    newSlider.Parent = newTab
+    newSlider.Title.Text = name
+    newSlider.Description.Text = desc
 
-	function self.newSlider(name, desc, max, manageSlider, func)
-		local newSlider = reserved.Slider:Clone()
+    local Mouse = game.Players.LocalPlayer:GetMouse()
+    local tweenServ = twServ
+    local Trigger = newSlider.ActualSlider.Trigger
+    local Label = newSlider.ActualSlider.Title
+    local Fill = newSlider.ActualSlider.Fill
+    local Parent = newSlider.ActualSlider
+    local MouseDown = false
+    local delayTw = 0.3
 
-		newSlider.MouseEnter:Connect(function()
-			local twBtn = twServ:Create(newSlider, TweenInfo.new(0.2), { Transparency = 0 })
+    local initPercent = math.clamp((default - min) / (max - min), 0, 1)
+    Label.Text = tostring(default)
+    Fill.Size = UDim2.fromScale(initPercent, 1)
+    func(default)
 
-			twBtn:Play()
-		end)
-		newSlider.MouseLeave:Connect(function()
-			local twBtn = twServ:Create(newSlider, TweenInfo.new(0.2), { Transparency = 0.4 })
+    local function Update()
+        MouseDown = true
+        repeat
+            task.wait()
+            local Percent = math.clamp((Mouse.X - Parent.AbsolutePosition.X) / Parent.AbsoluteSize.X, 0, 1)
+            local value = math.round(Percent * (max - min) + min)
+            Label.Text = tostring(value)
+            func(value)
+            local tween = tweenServ:Create(Fill, TweenInfo.new(delayTw, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Size = UDim2.fromScale(Percent, 1) })
+            tween:Play()
+        until MouseDown == false
+    end
 
-			twBtn:Play()
-		end)
-		newSlider.Visible = true
-		newSlider.Name = name
-		newSlider.Parent = newTab
-		newSlider.Title.Text = name
-		newSlider.Description.Text = desc
+    Trigger.MouseButton1Down:Connect(Update)
 
-		local Mouse = game.Players.LocalPlayer:GetMouse()
-		local tweenServ = twServ
-
-		local Trigger = newSlider.ActualSlider.Trigger
-		local Label = newSlider.ActualSlider.Title
-		local Fill = newSlider.ActualSlider.Fill
-		local Parent = newSlider.ActualSlider
-
-		local perc
-		local Percent
-		local MouseDown = false
-		local delayTw = 0.3
-
-		local function Update()
-			MouseDown = true
-			repeat
-				task.wait()
-				Percent = math.clamp((Mouse.X - Parent.AbsolutePosition.X) / Parent.AbsoluteSize.X, 0, 1)
-				perc = math.round(Percent * max)
-				if manageSlider == false then
-					Label.Text = perc
-					func(perc)
-				elseif manageSlider == true then
-					Label.Text = perc
-					func(perc, Label)
+    UIS.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or
+           input.UserInputType == Enum.UserInputType.Touch then
+            MouseDown = false
 				end
-				local tween = tweenServ:Create(Fill, TweenInfo.new(delayTw, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Size = UDim2.fromScale(Percent, 1) })
-				tween:Play()
-			until MouseDown == false
-		end
-
-		Trigger.MouseButton1Down:Connect(Update)
-
-		UIS.InputEnded:Connect(function(input)
-			if input.UserInputType ==  Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-				MouseDown = false
-			end
 		end)
+end
 
-	end
+	
 	
 	function self.newToggle(title, desc, toggle, func)
 		local realToggle = toggle
@@ -1690,10 +1797,9 @@ function UILIB.newTab(name, img)
 		
 		
 		newToggle.MouseEnter:Connect(function()
-			local twBtn = twServ:Create(newToggle, TweenInfo.new(0.2), { Transparency = 0 })
-
-			twBtn:Play()
-		end)
+    local twBtn = twServ:Create(newToggle, TweenInfo.new(0.2), { Transparency = 0 })
+    twBtn:Play()
+end)
 		newToggle.MouseLeave:Connect(function()
 			local twBtn = twServ:Create(newToggle, TweenInfo.new(0.2), { Transparency = 0.4 })
 
@@ -1771,7 +1877,73 @@ function UILIB.newTab(name, img)
 			end
 		end)
 	end
+function self.newColorPicker(name, desc, defaultColor, func)
+    local newCP = reserved.ColorPicker:Clone()
+    newCP.Visible = true
+    newCP.Parent = newTab
+    newCP.Name = name
+    newCP.Title.Text = name
+    newCP.Description.Text = desc
 
+    local Mouse = game.Players.LocalPlayer:GetMouse()
+    local currentR = defaultColor and math.floor(defaultColor.R * 255) or 255
+    local currentG = defaultColor and math.floor(defaultColor.G * 255) or 0
+    local currentB = defaultColor and math.floor(defaultColor.B * 255) or 0
+
+    local function updatePreview()
+        local col = Color3.fromRGB(currentR, currentG, currentB)
+        newCP.Preview.BackgroundColor3 = col
+        func(col)
+    end
+
+    local function setupSlider(fillName, trigName, valName, channel)
+        local fill = newCP:FindFirstChild(fillName, true)
+        local trigger = newCP:FindFirstChild(trigName, true)
+        local valLabel = newCP:FindFirstChild(valName, true)
+        local bar = trigger.Parent
+
+        local mouseDown = false
+
+        trigger.MouseButton1Down:Connect(function()
+            mouseDown = true
+            repeat
+                task.wait()
+                local pct = math.clamp((Mouse.X - bar.AbsolutePosition.X) / bar.AbsoluteSize.X, 0, 1)
+                local val = math.round(pct * 255)
+                valLabel.Text = tostring(val)
+                twServ:Create(fill, TweenInfo.new(0.1), { Size = UDim2.fromScale(pct, 1) }):Play()
+                if channel == "R" then currentR = val
+                elseif channel == "G" then currentG = val
+                elseif channel == "B" then currentB = val end
+                updatePreview()
+            until mouseDown == false
+        end)
+
+        UIS.InputEnded:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or
+               input.UserInputType == Enum.UserInputType.Touch then
+                mouseDown = false
+            end
+        end)
+
+        local initPct = (channel == "R" and currentR or channel == "G" and currentG or currentB) / 255
+        valLabel.Text = tostring(channel == "R" and currentR or channel == "G" and currentG or currentB)
+        fill.Size = UDim2.fromScale(initPct, 1)
+    end
+
+    setupSlider("RBar.Fill", "RBar.Trigger", "RValue", "R")
+    setupSlider("GBar.Fill", "GBar.Trigger", "GValue", "G")
+    setupSlider("BBar.Fill", "BBar.Trigger", "BValue", "B")
+
+    updatePreview()
+
+    newCP.MouseEnter:Connect(function()
+        twServ:Create(newCP, TweenInfo.new(0.2), { Transparency = 0 }):Play()
+    end)
+    newCP.MouseLeave:Connect(function()
+        twServ:Create(newCP, TweenInfo.new(0.2), { Transparency = 0.4 }):Play()
+    end)
+			end
 	return self
 end
 
